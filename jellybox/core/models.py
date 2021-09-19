@@ -18,6 +18,7 @@ class Task(models.Model):
     difficulty = models.IntegerField(default=0, null=True)
     start_date = models.DateTimeField(default=None, null=True)
     end_date = models.DateTimeField(default=None, null=True)
+    can_be_chunked = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now=True, null=False)
 
 
@@ -29,11 +30,9 @@ class Event(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.TextField(null=False)
     priority = models.IntegerField(null=False)
-    duration = models.IntegerField(default=0, null=True)
     difficulty = models.IntegerField(default=0, null=True)
     start_time = models.DateTimeField(default=None, null=False)
     end_time = models.DateTimeField(default=None, null=False)
-    all_day = models.BooleanField(default=False, null=False)
     date = models.DateField(null=False)
     timestamp_added = models.DateTimeField(auto_now=True, null=False)
 
