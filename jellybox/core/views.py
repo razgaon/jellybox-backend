@@ -49,6 +49,7 @@ class GetSchedule(APIView):
         week_from_now = today + datetime.timedelta(7)
         preferences = UserPreference.objects.filter(user_id=user_id)
         events = Event.objects.filter(user_id=user_id)
+        tasks = Task.objects.filter(user_id=user_id)
         # Get only until next week
         # Get the events
         schedule = Schedule(today, week_from_now, preferences, events, tasks)
